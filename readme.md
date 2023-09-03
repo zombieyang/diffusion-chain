@@ -1,5 +1,7 @@
-#
+# Diffusion-Chain
+A jsapi to invoke StableDiffusion or ComfyUI.
 
+## Usage 
 launch your StableDiffusion with `--api`
 
 ```javascript
@@ -38,3 +40,6 @@ server.generate(session, { batch: 1 })
         })
     })
 ```
+
+## More parameter
+see [schema.ts](./sessions/GenerateSession.ts)
