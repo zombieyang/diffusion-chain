@@ -1,18 +1,22 @@
 {
   "name": "diffusion-chain",
   "version": "1.0.0",
-  "description": "a jsapi to ",
+  "description": "A jsapi to invoke StableDiffusion or ComfyUI.",
   "main": "./dist/entry.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
+  "keywords": [
+    "ComfyUI",
+    "stable diffusion"
+  ],
   "scripts": {
     "test-sd": "cd test && ts-node test-server.ts",
     "test-comfy": "cd test && ts-node test-comfy.ts"
   },
   "author": "zombieyang",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/mkdirp": "^2.0.0",
     "@types/node": "^20.4.0",
