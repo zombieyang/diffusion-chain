@@ -5,6 +5,7 @@ A jsapi to invoke StableDiffusion or ComfyUI.
 launch your StableDiffusion with `--api`
 
 ```javascript
+import { SDServer, GenerateSession } from 'diffusion-chain'
 const server = new SDServer("http://127.0.0.1:7860");
 const session = new GenerateSession();
 session.modelCheckpoint = 'majicmixSombre_v20.safetensors [5c9a81db7a]'
@@ -24,7 +25,8 @@ server.generate(session, { batch: 1 })
 also support comfyUI and SDXL now:
 ```javascript
 
-const server = new SDServer("http://127.0.0.1:8188");
+import { ComfyServer, GenerateSession } from 'diffusion-chain'
+const server = new ComfyServer("http://127.0.0.1:8188");
 const session = new GenerateSession();
 session.modelCheckpoint = 'sd_xl_base_1.0_0.9vae.safetensors'
 session.modelCheckpointRefiner = 'sd_xl_refiner_1.0_0.9vae.safetensors'
@@ -42,4 +44,4 @@ server.generate(session, { batch: 1 })
 ```
 
 ## More parameter
-see [schema.ts](./sessions/GenerateSession.ts)
+see [schema.ts](https://github.com/zombieyang/diffusion-chain/blob/main/src/sessions/GenerateSession.ts)
