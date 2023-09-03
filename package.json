@@ -1,16 +1,17 @@
 {
   "name": "diffusion-chain",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "a jsapi to ",
+  "main": "./dist/entry.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-sd": "cd test && ts-node test-server.ts",
+    "test-comfy": "cd test && ts-node test-comfy.ts"
   },
-  "author": "",
+  "author": "zombieyang",
   "license": "ISC",
   "dependencies": {
     "@types/mkdirp": "^2.0.0",

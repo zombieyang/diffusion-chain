@@ -1,10 +1,11 @@
-import SDServer from '../backends/SDServer';
-import SDServerPool from '../backends/SDServerPool';
-import ControlNetSession from '../sessions/ControlNetSession';
-import ExtraSession from '../sessions/ExtraSession';
-import GenerateSession from '../sessions/GenerateSession';
+import {
+    SDServer, 
+    SDServerPool,
+    ControlNetSession,
+    ExtraSession,
+    GenerateSession
+} from '../src/entry';
 import { readBase64, writeBase64 } from './testlib';
-import { join } from 'path'
 
 const server1 = new SDServer("");
 const server2 = new SDServer("");
@@ -50,7 +51,7 @@ let interval: NodeJS.Timer | null = null;
     }, 1000)
     const res1 = await gen1;
     clearInterval(interval);
-    res1.forEach((image, index)=> {
+    res1.forEach((image, index) => {
         writeBase64(`.testoutput/poolgen1_${index}.png`, image)
     })
 

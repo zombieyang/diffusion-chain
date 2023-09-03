@@ -1,9 +1,5 @@
-import ComfyServer from '../backends/ComfyServer';
-import ControlNetSession from '../sessions/ControlNetSession';
-import ExtraSession from '../sessions/ExtraSession';
-import GenerateSession from '../sessions/GenerateSession';
+import { ComfyServer, GenerateSession } from '../src/entry';
 import { readBase64, writeBase64 } from './testlib';
-import { join } from 'path'
 
 const server = new ComfyServer("http://127.0.0.1:8188");
 const session = new GenerateSession();
@@ -49,7 +45,7 @@ session.height = 512
     //     writeBase64(`.testoutput_comfy/gen2_${index}.png`, image)
     // })
 
-    
+
     console.log('===gen3===');
     session.modelCheckpoint = 'sd_xl_base_1.0_0.9vae.safetensors'
     session.modelCheckpointRefiner = 'sd_xl_refiner_1.0_0.9vae.safetensors'
@@ -61,7 +57,7 @@ session.height = 512
     }, 1000)
     const res3 = await gen3;
     clearInterval(interval);
-    res3.forEach((image, index)=> {
+    res3.forEach((image, index) => {
         writeBase64(`.testoutput_comfy/gen3_${index}.png`, image)
     })
 
@@ -78,7 +74,7 @@ session.height = 512
     // }, 3000);
     const res4 = await gen4;
     clearInterval(interval);
-    res4.forEach((image, index)=> {
+    res4.forEach((image, index) => {
         writeBase64(`.testoutput_comfy/gen4_${index}.png`, image)
     })
 

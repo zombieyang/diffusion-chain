@@ -1,7 +1,9 @@
-import SDServer from '../backends/SDServer';
-import ControlNetSession from '../sessions/ControlNetSession';
-import ExtraSession from '../sessions/ExtraSession';
-import GenerateSession from '../sessions/GenerateSession';
+import {
+    SDServer, 
+    ControlNetSession,
+    ExtraSession,
+    GenerateSession
+} from '../src/entry';
 import { readBase64, writeBase64 } from './testlib';
 import { join } from 'path'
 
