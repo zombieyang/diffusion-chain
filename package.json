@@ -1,6 +1,6 @@
 {
   "name": "diffusion-chain",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A jsapi to invoke StableDiffusion or ComfyUI.",
   "main": "./dist/entry.js",
   "directories": {
@@ -17,6 +17,7 @@
   },
   "author": "zombieyang",
   "license": "MIT",
+  "repository": "https://github.com/zombieyang/diffusion-chain",
   "dependencies": {
     "@types/mkdirp": "^2.0.0",
     "@types/node": "^20.4.0",
