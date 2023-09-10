@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "test-sd": "cd test && ts-node test-server.ts",
-    "test-comfy": "cd test && ts-node test-comfy.ts"
+    "test-comfy": "cd test && ts-node test-comfy.ts",
+    "build": "tsc -p tsconfig.json"
   },
   "author": "zombieyang",
   "license": "MIT",
