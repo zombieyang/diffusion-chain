@@ -1,6 +1,6 @@
 {
   "name": "diffusion-chain",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A jsapi to invoke StableDiffusion or ComfyUI.",
   "main": "./dist/entry.js",
   "directories": {
