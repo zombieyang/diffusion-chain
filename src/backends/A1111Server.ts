@@ -8,6 +8,7 @@ export interface Requestable {
 }
 
 export interface SDRequestable extends Requestable {
+    getBaseUrl(): string;
     progress(skipImage: boolean): Promise<any>;
     generate(session: GenerateSession, option: {
         batch?: number,
@@ -16,8 +17,11 @@ export interface SDRequestable extends Requestable {
     extra(session: ExtraSession): Promise<string[]>;
 }
 
-export default class SDServer implements SDRequestable {
-    public readonly baseUrl: string;
+export default class A1111Server implements SDRequestable {
+    private readonly baseUrl: string;
+    getBaseUrl(): string {
+        return this.baseUrl
+    }
     public currentProcedure: { done: boolean } | null = null;
 
     public constructor(baseUrl: string) {
@@ -82,7 +86,7 @@ export default class SDServer implements SDRequestable {
     public async generate(session: GenerateSession, option: {
         batch?: number,
         imageFinishCallback?: (image: string, index: number) => void
-    }): Promise<string[]> {
+    } = {}): Promise<string[]> {
         if (this.currentProcedure && !this.currentProcedure.done) throw new Error('server is running another job');
 
         const param = session.makeSDParam();

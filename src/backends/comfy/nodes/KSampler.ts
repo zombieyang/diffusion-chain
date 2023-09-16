@@ -33,7 +33,7 @@ export default class KSampler extends ComfyNode<{
         super(id, properties);
     }
 
-    public getPayload() {
+    public getPayload(): any {
         return {
             inputs: {
                 seed: this.properties.seed,

@@ -1,4 +1,4 @@
-import SDServer, { SDRequestable } from "../backends/SDServer";
+import A1111Server, { SDRequestable } from "../backends/A1111Server";
 import { SDApi } from "../backends/sd-api";
 import { ControlMode, ControlNetPayload } from "../lib/schema";
 import Session from "./Session";
@@ -23,7 +23,7 @@ export default class ControlNetSession extends Session<ControlNetPayload> {
     public controlMode: ControlMode = ControlMode.Balanced;
 
 
-    public async detect(sd: SDServer): Promise<string> {
+    public async detect(sd: A1111Server): Promise<string> {
         const res: any = await SDApi.controlnetDetect(sd, {
             controlnet_module: this.module,
             controlnet_processor_res: this.processRes,

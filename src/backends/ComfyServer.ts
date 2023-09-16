@@ -1,13 +1,17 @@
 import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema";
 import ExtraSession from "../sessions/ExtraSession";
 import GenerateSession from "../sessions/GenerateSession";
-import { SDRequestable } from "./SDServer";
+import { SDRequestable } from "./A1111Server";
 import makeComfyImg2ImgPayload from "./comfy/workflows/img2img";
 import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img";
 import { ComfyApi } from "./comfyui-api";
 
 export default class ComfyServer implements SDRequestable {
-    public readonly baseUrl: string;
+    private readonly baseUrl: string;
+    getBaseUrl(): string {
+        return this.baseUrl
+    }
+
     public currentProcedure: { done: boolean } | null = null;
 
     public constructor(baseUrl: string) {

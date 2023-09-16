@@ -1,5 +1,5 @@
 import {
-    SDServer, 
+    A1111Server, 
     ControlNetSession,
     ExtraSession,
     GenerateSession
@@ -7,7 +7,7 @@ import {
 import { readBase64, writeBase64 } from './testlib';
 import { join } from 'path'
 
-const server = new SDServer("http://127.0.0.1:7860");
+const server = new A1111Server("http://127.0.0.1:7860");
 const session = new GenerateSession();
 session.modelCheckpoint = 'majicmixSombre_v20.safetensors [5c9a81db7a]'
 
