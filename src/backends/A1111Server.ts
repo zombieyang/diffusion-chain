@@ -1,7 +1,7 @@
 import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema";
 import ExtraSession from "../sessions/ExtraSession";
 import GenerateSession from "../sessions/GenerateSession";
-import { SDApi } from "./sd-api";
+import { A1111Api } from "./A1111-api";
 
 export interface Requestable {
     interrupt(): Promise<void>;
@@ -30,55 +30,22 @@ export default class A1111Server implements SDRequestable {
         }
         this.baseUrl = baseUrl;
     }
-    async get(url: string): Promise<any> {
-        var myHeaders = new Headers()
-        myHeaders.set("Content-Type", "application/json;")
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders
-        }
-        const res = (await fetch(this.baseUrl + url, requestOptions))
-        
-        if (res.status == 200) {
-            return res.json()
-        } else {
-            return res.text()
-        }
-        
-    }
-    async post(url: string, param: any): Promise<any> {
-        var myHeaders = new Headers()
-        myHeaders.set("Content-Type", "application/json;")
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: JSON.stringify(param),
-        }
-        const res = (await fetch(this.baseUrl + url, requestOptions))
-        console.log(res.status, this.baseUrl + url)
-        if (res.status == 200) {
-            return res.json()
-        } else {
-            return res.text()
-        }
-        
-    }
 
     public async interrupt(): Promise<void> {
         if (!this.currentProcedure) return;
-        await SDApi.interrupt(this);
+        await A1111Api.interrupt(this);
         this.currentProcedure.done = true;
     }
 
     public async skip(): Promise<void> {
         if (!this.currentProcedure) return;
-        await SDApi.interrupt(this);
+        await A1111Api.interrupt(this);
         this.currentProcedure.done = false;
     }
 
     public async progress(skipImage: boolean): Promise<number> {
         if (!this.currentProcedure) return 0;
-        const res = await SDApi.progress(this, { skip_current_image: skipImage });
+        const res = await A1111Api.progress(this, { skip_current_image: skipImage });
 
         return res.progress
     }
@@ -98,7 +65,7 @@ export default class A1111Server implements SDRequestable {
             done: false
         }
 
-        const switchModelResult = await SDApi.options(this, {
+        const switchModelResult = await A1111Api.options(this, {
             'sd_model_checkpoint': ckpt
         })
         console.log(switchModelResult)
@@ -112,10 +79,10 @@ export default class A1111Server implements SDRequestable {
                 if (maybeImgtoImgParam.denoising_strength == 0) {
                     console.warn('denoising strength is 0')
                 }
-                res = await SDApi.img2img(this, param as Img2imgPayload);
+                res = await A1111Api.img2img(this, param as Img2imgPayload);
 
             } else {
-                res = await SDApi.txt2img(this, param as Txt2imgPayload);
+                res = await A1111Api.txt2img(this, param as Txt2imgPayload);
             }
 
             if (res && res.images && res.images[0]) {
@@ -139,7 +106,7 @@ export default class A1111Server implements SDRequestable {
     }
 
     public async extra(session: ExtraSession): Promise<string[]> {
-        const res = await SDApi.extraBatchImages(this, session.makeSDParam());
+        const res = await A1111Api.extraBatchImages(this, session.makeSDParam());
 
         if (res && res.images) {
             return res.images;
