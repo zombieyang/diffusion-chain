@@ -5,8 +5,8 @@ A jsapi to invoke StableDiffusion or ComfyUI.
 launch your StableDiffusion with `--api`
 
 ```javascript
-import { SDServer, GenerateSession } from 'diffusion-chain'
-const server = new SDServer("http://127.0.0.1:7860");
+import { A1111Server, GenerateSession } from 'diffusion-chain'
+const server = new A1111Server("http://127.0.0.1:7860");
 const session = new GenerateSession();
 session.modelCheckpoint = 'majicmixSombre_v20.safetensors [5c9a81db7a]'
 
