@@ -4,12 +4,29 @@ import GenerateSession from "../sessions/GenerateSession";
 import { SDRequestable } from "./A1111Server";
 import makeComfyImg2ImgPayload from "./comfy/workflows/img2img";
 import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img";
-import { ComfyApi } from "./comfyui-api";
+import { ComfyApi, ComfyResult } from "./comfyui-api";
+
+
+
 
 export default class ComfyServer implements SDRequestable {
     private readonly baseUrl: string;
     getBaseUrl(): string {
         return this.baseUrl
+    }
+
+    getReadableError(result: ComfyResult): string {
+        const parseError = (error: any) => 
+            `Error: ${error.message}\n${error.details ? `Details: ${error.details}\n` : ''}`;
+
+        let errorMessage = result.error ? parseError(result.error) : '';
+
+        if (result.node_errors) {
+            for (const [node_id, node_error] of Object.entries(result.node_errors)) {
+                errorMessage += `Node ${node_id}:\n${node_error.errors.map(parseError).join('')}`;
+            }
+        }
+        return errorMessage;
     }
 
     public currentProcedure: { done: boolean } | null = null;
@@ -150,7 +167,8 @@ export default class ComfyServer implements SDRequestable {
             }
             
             if (res.error) {
-                throw new Error(JSON.stringify(res.error));
+                const readable_error = this.getReadableError(res)
+                throw new Error(readable_error);
             }
             
             const prompt_id = res.prompt_id;
