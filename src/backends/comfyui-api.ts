@@ -14,6 +14,22 @@ export interface ComfyPrompt {
         [id: number]: ComfyPromptNode
     }
 }
+interface ComfyError {
+    type: string
+    message: string
+    details: string
+    extra_info: any
+}
+
+interface NodeError {
+    errors: ComfyError[]
+    dependent_outputs: string[]
+    class_type: string
+}
+export interface ComfyResult {
+    error?: ComfyError
+    node_errors?: { [key: string]: NodeError }
+}
 
 export class ComfyApi {
     public static async prompt(comfyui: ComfyServer, payload: ComfyPrompt) {
