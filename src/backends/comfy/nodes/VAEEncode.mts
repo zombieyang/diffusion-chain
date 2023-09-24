@@ -1,7 +1,7 @@
-import CheckpointLoaderSimple from "./CheckpointLoaderSimple";
-import KSampler from "./KSampler";
-import LoadImage from "./LoadImage";
-import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base";
+import CheckpointLoaderSimple from "./CheckpointLoaderSimple.mjs";
+import KSampler from "./KSampler.mjs";
+import LoadImage from "./LoadImage.mjs";
+import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base.mjs";
 
 export default class VAEEncode extends ComfyNode<{
     pixels: LoadImage,

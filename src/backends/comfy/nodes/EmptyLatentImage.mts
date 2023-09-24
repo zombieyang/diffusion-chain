@@ -1,5 +1,5 @@
-import CheckpointLoaderSimple from "./CheckpointLoaderSimple";
-import ComfyNode from "./_Base";
+import CheckpointLoaderSimple from "./CheckpointLoaderSimple.mjs";
+import ComfyNode from "./_Base.mjs";
 
 export default class EmptyLatentImage extends ComfyNode<{
     width: number,

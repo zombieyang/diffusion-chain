@@ -1,13 +1,10 @@
-import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema";
-import ExtraSession from "../sessions/ExtraSession";
-import GenerateSession from "../sessions/GenerateSession";
-import { SDRequestable } from "./A1111Server";
-import makeComfyImg2ImgPayload from "./comfy/workflows/img2img";
-import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img";
-import { ComfyApi, ComfyResult } from "./comfyui-api";
-
-
-
+import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema.mjs";
+import ExtraSession from "../sessions/ExtraSession.mjs";
+import GenerateSession from "../sessions/GenerateSession.mjs";
+import { SDRequestable } from "./A1111Server.mjs";
+import makeComfyImg2ImgPayload from "./comfy/workflows/img2img.mjs";
+import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img.mjs";
+import { ComfyApi, ComfyResult } from "./comfyui-api.mjs";
 
 export default class ComfyServer implements SDRequestable {
     private readonly baseUrl: string;
@@ -36,6 +33,12 @@ export default class ComfyServer implements SDRequestable {
             throw new Error("comfyui baseurl is missed");
         }
         this.baseUrl = baseUrl;
+    }
+    ping(): Promise<boolean> {
+        throw new Error("Method not implemented.");
+    }
+    getDetailInfo(): Promise<any> {
+        throw new Error("Method not implemented.");
     }
 
     public async interrupt(): Promise<void> {

@@ -1,7 +1,7 @@
-import A1111Server, { SDRequestable } from "../backends/A1111Server";
-import { A1111Api } from "../backends/A1111-api";
-import { ControlMode, ControlNetPayload } from "../lib/schema";
-import Session from "./Session";
+import A1111Server, { SDRequestable } from "../backends/A1111Server.mjs";
+import { A1111Api } from "../backends/A1111-api.mjs";
+import { ControlMode, ControlNetPayload } from "../lib/schema.mjs";
+import Session from "./Session.mjs";
  
 
 export default class ControlNetSession extends Session<ControlNetPayload> {

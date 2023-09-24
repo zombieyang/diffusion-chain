@@ -1,6 +1,6 @@
-import { DetectPayload, Img2imgPayload, Txt2imgPayload, ExtraPayload } from "../lib/schema";
-import A1111Server from "./A1111Server";
-import { get, postJSON } from "./util";
+import { DetectPayload, Img2imgPayload, Txt2imgPayload, ExtraPayload } from "../lib/schema.mjs";
+import A1111Server from "./A1111Server.mjs";
+import { get, postJSON } from "./util.mjs";
 
 
 export class A1111Api {

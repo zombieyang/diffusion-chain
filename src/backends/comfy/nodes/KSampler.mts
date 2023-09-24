@@ -1,9 +1,9 @@
-import CLIPTextEncode from "./CLIPTextEncode";
-import CheckpointLoaderSimple from "./CheckpointLoaderSimple";
-import EmptyLatentImage from "./EmptyLatentImage";
-import LoadImage from "./LoadImage";
-import VAEEncode from "./VAEEncode";
-import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base";
+import CLIPTextEncode from "./CLIPTextEncode.mjs";
+import CheckpointLoaderSimple from "./CheckpointLoaderSimple.mjs";
+import EmptyLatentImage from "./EmptyLatentImage.mjs";
+import LoadImage from "./LoadImage.mjs";
+import VAEEncode from "./VAEEncode.mjs";
+import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base.mjs";
 
 export default class KSampler extends ComfyNode<{
     seed: number,

@@ -1,7 +1,7 @@
 {
   "include": [
     "./src/**/*.ts"
-  ],
+, "src/entry.mts", "src/backends/comfy/nodes/_Base.mts", "src/backends/comfy/nodes/CheckpointLoaderSimple.mts", "src/backends/comfy/nodes/CLIPTextEncode.mts", "src/backends/comfy/nodes/EmptyLatentImage.mts", "src/backends/comfy/nodes/KSampler.mts", "src/backends/comfy/nodes/LoadImage.mts", "src/backends/comfy/nodes/SaveImage.mts", "src/backends/comfy/nodes/VAEDecode.mts", "src/backends/comfy/nodes/VAEEncode.mts", "src/backends/comfy/workflows/_Base.mts", "src/backends/comfy/workflows/img2img.mts", "src/backends/comfy/workflows/txt2img.mts", "src/backends/A1111-api.mts", "src/backends/A1111Server.mts", "src/backends/ComfyServer.mts", "src/backends/comfyui-api.mts", "src/backends/SDServerPool.mts", "src/backends/util.mts", "src/lib/schema.mts", "src/sessions/ControlNetSession.mts", "src/sessions/ExtraSession.mts", "src/sessions/GenerateSession.mts", "src/sessions/Session.mts"  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 

@@ -1,7 +1,7 @@
-import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema";
-import ExtraSession from "../sessions/ExtraSession";
-import GenerateSession from "../sessions/GenerateSession";
-import { A1111Api } from "./A1111-api";
+import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema.mjs";
+import ExtraSession from "../sessions/ExtraSession.mjs";
+import GenerateSession from "../sessions/GenerateSession.mjs";
+import { A1111Api } from "./A1111-api.mjs";
 
 export interface Requestable {
     interrupt(): Promise<void>;

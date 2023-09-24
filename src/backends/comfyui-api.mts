@@ -1,8 +1,8 @@
 import { readFileSync } from "fs";
-import { DetectPayload, Img2imgPayload, Txt2imgPayload, ExtraPayload } from "../lib/schema";
-import ComfyServer from "./ComfyServer";
-import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img";
-import { get, postForm, postJSON } from "./util";
+import { DetectPayload, Img2imgPayload, Txt2imgPayload, ExtraPayload } from "../lib/schema.mjs";
+import ComfyServer from "./ComfyServer.mjs";
+import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img.mjs";
+import { get, postForm, postJSON } from "./util.mjs";
 
 export interface ComfyPromptNode {
     "inputs": any,

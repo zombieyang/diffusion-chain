@@ -1,5 +1,5 @@
-import { ComfyServer, GenerateSession } from '../src/entry';
-import { readBase64, writeBase64 } from './testlib';
+import { ComfyServer, GenerateSession } from '../src/entry.mjs';
+import { readBase64, writeBase64 } from './testlib.mjs';
 
 const server = new ComfyServer("http://127.0.0.1:8188");
 const session = new GenerateSession();

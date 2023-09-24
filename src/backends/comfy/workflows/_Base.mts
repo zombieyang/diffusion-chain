@@ -1,5 +1,5 @@
-import { ComfyPrompt } from "../../comfyui-api";
-import ComfyNode from "../nodes/_Base";
+import { ComfyPrompt } from "../../comfyui-api.mjs";
+import ComfyNode from "../nodes/_Base.mjs";
 
 type ComfyNodeProps<Type> = Type extends ComfyNode<infer X> ? X : never
 

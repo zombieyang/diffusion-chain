@@ -1,6 +1,6 @@
-import { Img2imgPayload, Txt2imgPayload } from "../lib/schema";
-import ControlNetSession from "./ControlNetSession";
-import Session from "./Session";
+import { Img2imgPayload, Txt2imgPayload } from "../lib/schema.mjs";
+import ControlNetSession from "./ControlNetSession.mjs";
+import Session from "./Session.mjs";
 
 export default class GenerateSession extends Session<Txt2imgPayload | Img2imgPayload> {
     public modelCheckpoint: string = '';

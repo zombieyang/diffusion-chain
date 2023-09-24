@@ -3,8 +3,8 @@ import {
     ControlNetSession,
     ExtraSession,
     GenerateSession
-} from '../src/entry';
-import { readBase64, writeBase64 } from './testlib';
+} from '../src/entry.mjs';
+import { readBase64, writeBase64 } from './testlib.mjs';
 import { join } from 'path'
 
 const server = new A1111Server("http://127.0.0.1:7860");

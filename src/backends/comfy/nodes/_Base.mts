@@ -1,4 +1,4 @@
-import { ComfyPromptNode } from "../../comfyui-api";
+import { ComfyPromptNode } from "../../comfyui-api.mjs";
 
 export default abstract class ComfyNode<T extends {}> {
     public properties: T;

@@ -1,5 +1,5 @@
-import CheckpointLoaderSimple from "./CheckpointLoaderSimple";
-import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base";
+import CheckpointLoaderSimple from "./CheckpointLoaderSimple.mjs";
+import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base.mjs";
 
 export default class CLIPTextEncode extends ComfyNode<{
     text: string,

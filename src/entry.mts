@@ -1,11 +1,11 @@
-import ComfyServer from "./backends/ComfyServer";
-import A1111Server from "./backends/A1111Server";
+import ComfyServer from "./backends/ComfyServer.mjs";
+import A1111Server from "./backends/A1111Server.mjs";
 // import SDServerPool from "./backends/SDServerPool";
-import ControlNetSession from "./sessions/ControlNetSession";
-import ExtraSession from "./sessions/ExtraSession";
-import GenerateSession from "./sessions/GenerateSession";
-import { A1111Api } from "./backends/A1111-api";
-import { ComfyApi } from "./backends/comfyui-api";
+import ControlNetSession from "./sessions/ControlNetSession.mjs";
+import ExtraSession from "./sessions/ExtraSession.mjs";
+import GenerateSession from "./sessions/GenerateSession.mjs";
+import { A1111Api } from "./backends/A1111-api.mjs";
+import { ComfyApi } from "./backends/comfyui-api.mjs";
 
 enum ServerType {
     Comfy = "Comfy",

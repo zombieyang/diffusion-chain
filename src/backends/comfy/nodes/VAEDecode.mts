@@ -1,6 +1,6 @@
-import CheckpointLoaderSimple from "./CheckpointLoaderSimple";
-import KSampler from "./KSampler";
-import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base";
+import CheckpointLoaderSimple from "./CheckpointLoaderSimple.mjs";
+import KSampler from "./KSampler.mjs";
+import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base.mjs";
 
 export default class VAEDecode extends ComfyNode<{
     vae: CheckpointLoaderSimple,
