@@ -21,6 +21,12 @@ export class A1111Api {
         return await get(sd.getBaseUrl() + "/sdapi/v1/sd-models")
 
     }
+    public static async loras(sd: A1111Server) {
+        return await get(sd.getBaseUrl() + "/sdapi/v1/loras")
+    }
+    public static async embeddings(sd: A1111Server) {
+        return await get(sd.getBaseUrl() + "/sdapi/v1/embeddings")
+    }
     public static async samplers(sd: A1111Server) {
         return await get(sd.getBaseUrl() + "/sdapi/v1/samplers")
 
@@ -43,9 +49,6 @@ export class A1111Api {
     public static async upscalers(sd: A1111Server) {
         return await get(sd.getBaseUrl() + "/sdapi/v1/upscalers")
 
-    }
-    public static async loras(sd: A1111Server) {
-        return await get(sd.getBaseUrl() + "/sdapi/v1/loras")
     }
 
     public static async controlnetModelList(sd: A1111Server) {

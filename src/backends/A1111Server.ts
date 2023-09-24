@@ -15,6 +15,8 @@ export interface SDRequestable extends Requestable {
         imageFinishCallback?: (image: string, index: number) => void
     }): Promise<string[]>;
     extra(session: ExtraSession): Promise<string[]>;
+    ping(): Promise<boolean>;
+    getDetailInfo(): Promise<any>;
 }
 
 export default class A1111Server implements SDRequestable {
@@ -29,6 +31,13 @@ export default class A1111Server implements SDRequestable {
             throw new Error("sd baseurl is missed");
         }
         this.baseUrl = baseUrl;
+    }
+    
+    ping(): Promise<boolean> {
+        throw new Error("Method not implemented.");
+    }
+    getDetailInfo(): Promise<any> {
+        throw new Error("Method not implemented.");
     }
 
     public async interrupt(): Promise<void> {
