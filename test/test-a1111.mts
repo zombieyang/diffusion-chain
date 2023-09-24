@@ -1,5 +1,5 @@
 import {
-    A1111Server, 
+    A1111Server,
     ControlNetSession,
     ExtraSession,
     GenerateSession
@@ -7,7 +7,7 @@ import {
 import { readBase64, writeBase64 } from './testlib.mjs';
 import { join } from 'path'
 
-const server = new A1111Server("http://127.0.0.1:7860");
+const server = new A1111Server("http://sd2060.djzombie.club");
 const session = new GenerateSession();
 session.modelCheckpoint = 'majicmixSombre_v20.safetensors [5c9a81db7a]'
 
@@ -39,6 +39,13 @@ session.height = 512
 
     ;
 (async function () {
+    if (!await server.ping()) {
+        throw new Error('server is not online: ' + server.getBaseUrl());
+    }
+
+    console.log("===serverinfo===");
+    console.log(await server.getDetailInfo());
+
     console.log('===gen1===');
     const gen1 = server.generate(session, { batch: 1 });
     let interval = setInterval(async () => {
@@ -46,7 +53,7 @@ session.height = 512
     }, 1000)
     const res1 = await gen1;
     clearInterval(interval);
-    res1.forEach((image, index)=> {
+    res1.forEach((image, index) => {
         writeBase64(`.testoutput/gen1_${index}.png`, image)
     })
 
@@ -63,7 +70,7 @@ session.height = 512
     }, 3000);
     const res2 = await gen2;
     clearInterval(interval);
-    res2.forEach((image, index)=> {
+    res2.forEach((image, index) => {
         writeBase64(`.testoutput/gen2_${index}.png`, image)
     })
 
@@ -81,7 +88,7 @@ session.height = 512
     }, 1000)
     const res3 = await gen3;
     clearInterval(interval);
-    res3.forEach((image, index)=> {
+    res3.forEach((image, index) => {
         writeBase64(`.testoutput/gen3_${index}.png`, image)
     })
 
@@ -100,7 +107,7 @@ session.height = 512
     }, 1000)
     const res4 = await extra
     clearInterval(interval);
-    res4.forEach((image, index)=> {
+    res4.forEach((image, index) => {
         writeBase64(`.testoutput/gen4_${index}.png`, image)
     })
 

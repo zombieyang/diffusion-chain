@@ -1,3 +1,11 @@
+export async function head(url: string): Promise<number> {
+    var requestOptions = {
+        method: 'HEAD'
+    }
+    const res = (await fetch(url, requestOptions))
+    return res.status
+}
+
 export async function get(url: string): Promise<any> {
     var myHeaders = new Headers()
     var requestOptions = {

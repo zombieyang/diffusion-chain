@@ -34,11 +34,11 @@ export default class ComfyServer implements SDRequestable {
         }
         this.baseUrl = baseUrl;
     }
-    ping(): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    public async ping(): Promise<boolean> {
+        return await ComfyApi.headBaseURL(this) == 200
     }
-    getDetailInfo(): Promise<any> {
-        throw new Error("Method not implemented.");
+    public async getDetailInfo(): Promise<any> {
+        return await ComfyApi.objectInfo(this)
     }
 
     public async interrupt(): Promise<void> {

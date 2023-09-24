@@ -1,6 +1,6 @@
 import { DetectPayload, Img2imgPayload, Txt2imgPayload, ExtraPayload } from "../lib/schema.mjs";
 import A1111Server from "./A1111Server.mjs";
-import { get, postJSON } from "./util.mjs";
+import { get, head, postJSON } from "./util.mjs";
 
 
 export class A1111Api {
@@ -59,5 +59,9 @@ export class A1111Api {
     }
     public static async controlnetDetect(sd: A1111Server, param: DetectPayload): Promise<string[]> {
         return await postJSON(sd.getBaseUrl() + "/controlnet/detect", param)
+    }
+
+    public static async headBaseURL(sd: A1111Server): Promise<number> {
+        return await head(sd.getBaseUrl())
     }
 }

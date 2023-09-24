@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { DetectPayload, Img2imgPayload, Txt2imgPayload, ExtraPayload } from "../lib/schema.mjs";
 import ComfyServer from "./ComfyServer.mjs";
 import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img.mjs";
-import { get, postForm, postJSON } from "./util.mjs";
+import { get, head, postForm, postJSON } from "./util.mjs";
 
 export interface ComfyPromptNode {
     "inputs": any,
@@ -67,5 +67,9 @@ export class ComfyApi {
         return await postForm(comfyui.getBaseUrl() + '/upload/image', {
             image: new Blob([Buffer.from(imgBase64, 'base64')])
         })
+    }
+
+    public static async headBaseURL(comfyui: ComfyServer): Promise<number> {
+        return await head(comfyui.getBaseUrl())
     }
 }

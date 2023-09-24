@@ -32,12 +32,34 @@ export default class A1111Server implements SDRequestable {
         }
         this.baseUrl = baseUrl;
     }
-    
-    ping(): Promise<boolean> {
-        throw new Error("Method not implemented.");
+
+    public async ping(): Promise<boolean> {
+        return await A1111Api.headBaseURL(this) == 200
     }
-    getDetailInfo(): Promise<any> {
-        throw new Error("Method not implemented.");
+    public async getDetailInfo(): Promise<any> {
+        const ret: any = {};
+
+        const [
+            loras,
+            embeddings,
+            samplers,
+            options,
+            models
+        ] = await Promise.all([
+            A1111Api.loras(this),
+            A1111Api.embeddings(this),
+            A1111Api.samplers(this),
+            A1111Api.options(this),
+            A1111Api.sdModels(this)
+        ])
+
+        ret.loras = loras;
+        ret.embeddings = embeddings;
+        ret.samplers = samplers;
+        ret.options = options;
+        ret.models = models;
+
+        return ret;
     }
 
     public async interrupt(): Promise<void> {
