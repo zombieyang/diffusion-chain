@@ -41,8 +41,8 @@ export class ComfyApi {
     public static async history(comfyui: ComfyServer) {
         return await comfyui.get("/history");
     }
-    public static async view(comfyui: ComfyServer, filename: string): Promise<string> {
-        const ab: ArrayBuffer = await comfyui.get('/view?subfolder=&type=output&filename=' + filename);
+    public static async view(comfyui: ComfyServer, filename: string, type: string="output",subfolder: string=""): Promise<string> {
+        const ab: ArrayBuffer = await comfyui.get(`/view?subfolder=${subfolder}&type=${type}&filename=${filename}` );
         return Buffer.from(ab).toString('base64');
     }
     public static async progress(comfyui: ComfyServer, param: { skip_current_image: boolean } = { skip_current_image: true }) {
