@@ -1,2 +1,4 @@
 node_modules
 dist
+test/.testoutput_comfy/*.png
+test/.testoutput/*.png
