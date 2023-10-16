@@ -14,6 +14,8 @@ session.prompt = `
 cute cat
 `
 
+server.ping.then(isAlive => { console.log(isAlive) })
+
 server.generate(session, { batch: 1 })
     .then(res=> {
         res.forEach(image=> {

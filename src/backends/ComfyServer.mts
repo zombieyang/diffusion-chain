@@ -1,13 +1,10 @@
-import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema";
-import ExtraSession from "../sessions/ExtraSession";
-import GenerateSession from "../sessions/GenerateSession";
-import { SDRequestable } from "./A1111Server";
-import makeComfyImg2ImgPayload from "./comfy/workflows/img2img";
-import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img";
-import { ComfyApi, ComfyResult } from "./comfyui-api";
-
-
-
+import { GenerationPayload, Img2imgPayload, Txt2imgPayload } from "../lib/schema.mjs";
+import ExtraSession from "../sessions/ExtraSession.mjs";
+import GenerateSession from "../sessions/GenerateSession.mjs";
+import { SDRequestable } from "./A1111Server.mjs";
+import makeComfyImg2ImgPayload from "./comfy/workflows/img2img.mjs";
+import makeComfyTxt2ImgPayload from "./comfy/workflows/txt2img.mjs";
+import { ComfyApi, ComfyResult } from "./comfyui-api.mjs";
 
 export default class ComfyServer implements SDRequestable {
     private readonly baseUrl: string;
@@ -37,79 +34,11 @@ export default class ComfyServer implements SDRequestable {
         }
         this.baseUrl = baseUrl;
     }
-    async get(url: string): Promise<any> {
-        var myHeaders = new Headers()
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders
-        }
-        const res = (await fetch(this.baseUrl + url, requestOptions))
-        
-        const contentType = res.headers.get('Content-Type');
-        
-        if (contentType?.indexOf('json') != -1) {
-            return res.json();
-
-        } else {
-            if (res.status == 200) {
-                return res.arrayBuffer();
-
-            } else {
-                return res.text()
-            }
-        }
-        
+    public async ping(): Promise<boolean> {
+        return await ComfyApi.headBaseURL(this) == 200
     }
-    async postJSON(url: string, param: any): Promise<any> {
-        var myHeaders = new Headers()
-        myHeaders.set("Content-Type", "application/json;")
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: JSON.stringify(param),
-        }
-        const res = (await fetch(this.baseUrl + url, requestOptions))
-        console.log(res.status, this.baseUrl + url)
-
-        const contentType = res.headers.get('Content-Type');
-        
-        if (contentType?.indexOf('json') != -1) {
-            return res.json();
-
-        } else {
-            if (res.status == 200) {
-                return res.arrayBuffer();
-
-            } else {
-                return res.text()
-            }
-        }
-    }
-    async postForm(url: string, param: any): Promise<any> {
-        const data = new FormData();
-        Object.keys(param).forEach(key => {
-            data.append(key, param[key]);
-        })
-        var requestOptions = {
-            method: 'POST',
-            body: data,
-        }
-        const res = (await fetch(this.baseUrl + url, requestOptions))
-        console.log(res.status, this.baseUrl + url)
-
-        const contentType = res.headers.get('Content-Type');
-        
-        if (contentType?.indexOf('json') != -1) {
-            return res.json();
-
-        } else {
-            if (res.status == 200) {
-                return res.arrayBuffer();
-
-            } else {
-                return res.text()
-            }
-        }
+    public async getDetailInfo(): Promise<any> {
+        return await ComfyApi.objectInfo(this)
     }
 
     public async interrupt(): Promise<void> {

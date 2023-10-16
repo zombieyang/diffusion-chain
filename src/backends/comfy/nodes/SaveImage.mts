@@ -1,5 +1,5 @@
-import VAEDecode from "./VAEDecode";
-import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base";
+import VAEDecode from "./VAEDecode.mjs";
+import ComfyNode, { transferNodeOutputToInputIfMatch } from "./_Base.mjs";
 
 export default class SaveImage extends ComfyNode<{
     image: VAEDecode,

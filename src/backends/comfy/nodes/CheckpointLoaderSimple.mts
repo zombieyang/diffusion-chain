@@ -1,4 +1,4 @@
-import ComfyNode from "./_Base";
+import ComfyNode from "./_Base.mjs";
 
 
 

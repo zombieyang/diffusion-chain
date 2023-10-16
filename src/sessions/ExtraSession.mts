@@ -1,5 +1,5 @@
-import { ExtraPayload } from "../lib/schema"
-import Session from "./Session"
+import { ExtraPayload } from "../lib/schema.mjs"
+import Session from "./Session.mjs"
 
 export default class ExtraSession extends Session<ExtraPayload> {
     resizeMode: number = 0

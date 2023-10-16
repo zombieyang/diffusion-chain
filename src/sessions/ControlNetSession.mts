@@ -1,7 +1,7 @@
-import A1111Server, { SDRequestable } from "../backends/A1111Server";
-import { SDApi } from "../backends/sd-api";
-import { ControlMode, ControlNetPayload } from "../lib/schema";
-import Session from "./Session";
+import A1111Server, { SDRequestable } from "../backends/A1111Server.mjs";
+import { A1111Api } from "../backends/A1111-api.mjs";
+import { ControlMode, ControlNetPayload } from "../lib/schema.mjs";
+import Session from "./Session.mjs";
  
 
 export default class ControlNetSession extends Session<ControlNetPayload> {
@@ -24,7 +24,7 @@ export default class ControlNetSession extends Session<ControlNetPayload> {
 
 
     public async detect(sd: A1111Server): Promise<string> {
-        const res: any = await SDApi.controlnetDetect(sd, {
+        const res: any = await A1111Api.controlnetDetect(sd, {
             controlnet_module: this.module,
             controlnet_processor_res: this.processRes,
             controlnet_threshold_a: this.thresholdA,

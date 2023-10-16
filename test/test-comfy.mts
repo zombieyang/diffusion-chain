@@ -1,7 +1,7 @@
-import { ComfyServer, GenerateSession } from '../src/entry';
-import { readBase64, writeBase64 } from './testlib';
+import { ComfyServer, GenerateSession } from '../src/entry.mjs';
+import { readBase64, writeBase64 } from './testlib.mjs';
 
-const server = new ComfyServer("http://127.0.0.1:8188");
+const server = new ComfyServer("http://comfy2060.djzombie.club");
 const session = new GenerateSession();
 session.modelCheckpoint = 'majicmixSombre_v20.safetensors [5c9a81db7a]'
 
@@ -17,6 +17,13 @@ session.height = 512
 
     ;
 (async function () {
+    if (!await server.ping()) {
+        throw new Error('server is not online: ' + server.getBaseUrl());
+    }
+
+    console.log("===serverinfo===");
+    console.log(await server.getDetailInfo());
+
     // console.log('===gen1===');
     // const gen1 = server.generate(session, { batch: 1 });
     // let interval = setInterval(async () => {

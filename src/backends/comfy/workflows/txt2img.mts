@@ -1,11 +1,11 @@
-import { Txt2imgPayload } from "../../../lib/schema";
-import CLIPTextEncode from "../nodes/CLIPTextEncode";
-import CheckpointLoaderSimple from "../nodes/CheckpointLoaderSimple";
-import EmptyLatentImage from "../nodes/EmptyLatentImage";
-import KSampler from "../nodes/KSampler";
-import SaveImage from "../nodes/SaveImage";
-import VAEDecode from "../nodes/VAEDecode";
-import ComfyWorkflow from "./_Base";
+import { Txt2imgPayload } from "../../../lib/schema.mjs";
+import CLIPTextEncode from "../nodes/CLIPTextEncode.mjs";
+import CheckpointLoaderSimple from "../nodes/CheckpointLoaderSimple.mjs";
+import EmptyLatentImage from "../nodes/EmptyLatentImage.mjs";
+import KSampler from "../nodes/KSampler.mjs";
+import SaveImage from "../nodes/SaveImage.mjs";
+import VAEDecode from "../nodes/VAEDecode.mjs";
+import ComfyWorkflow from "./_Base.mjs";
 
 export default function makeComfyTxt2ImgPayload(payload: Txt2imgPayload, ckpt: string, ckptRefiner: string | null) {
     const workflow = new ComfyWorkflow();
