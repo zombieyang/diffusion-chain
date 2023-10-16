@@ -12,8 +12,8 @@
     "stable diffusion"
   ],
   "scripts": {
-    "test-sd": "cd test && ts-node -O \"{\\\"module\\\":\\\"commonjs\\\",\\\"target\\\":\\\"es2022\\\"}\" test-server.ts",
-    "test-comfy": "cd test && ts-node -O \"{\\\"module\\\":\\\"commonjs\\\",\\\"target\\\":\\\"es2022\\\"}\" test-comfy.ts",
+    "test-sd": "cd test && ts-node --esm test-a1111.mts",
+    "test-comfy": "cd test && ts-node --esm test-comfy.mts",
     "build": "tsc -p tsconfig.json"
   },
   "author": "zombieyang",
