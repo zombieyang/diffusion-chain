@@ -114,8 +114,8 @@ export default class ComfyServer implements SDRequestable {
             
             const promptInfo = history[prompt_id];
             // [4][0] for output id.
-            const fileName = promptInfo.outputs[promptInfo.prompt[4][0]].images[0].filename
-            const resultB64 = await ComfyApi.view(this, fileName);
+            const {filename,subfolder,type} = promptInfo.outputs[promptInfo.prompt[4][0]].images[0]
+            const resultB64 = await ComfyApi.view(this, filename,type,subfolder);
             
             resultImages.push(resultB64)
             if (option.imageFinishCallback) {

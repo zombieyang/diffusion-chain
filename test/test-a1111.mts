@@ -7,7 +7,10 @@ import {
 import { readBase64, writeBase64 } from './testlib.mjs';
 import { join } from 'path'
 
-const server = new A1111Server("http://sd2060.djzombie.club");
+import { readFileSync } from "fs";
+let config = JSON.parse(readFileSync('config.json', 'utf8'));
+
+const server = new A1111Server(config.sd_url);
 const session = new GenerateSession();
 session.modelCheckpoint = 'majicmixSombre_v20.safetensors [5c9a81db7a]'
 
